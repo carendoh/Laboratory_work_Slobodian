@@ -16,7 +16,6 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(methodOverride());
-
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(config.get('port'), function () {
@@ -43,6 +42,7 @@ app.post('/api/articles', function (req, res) {
         description: req.body.description,
         images: req.body.images
     });
+
     article.save(function (err) {
         if (!err) {
             log.info('article created');
